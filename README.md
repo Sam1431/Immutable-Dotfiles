@@ -62,9 +62,6 @@ Nixpkgs
                          Starship ----|
 ```
 --------------------------------------------------
-
-
-
  #### System Fetch
  <img src="https://github.com/Sam1431/Immutable-Dotfiles/blob/main/.assets/fe.png" alt="img" align="left" width="230px">
 
