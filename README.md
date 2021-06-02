@@ -15,6 +15,7 @@ Nixpkgs
   |         |---- Wall       ( wallpaper ) 
   |         |---- Xpm        ( icons )
   |
+  |
   |------- User
             |
             |-------- Config
@@ -36,12 +37,14 @@ Nixpkgs
              |         |
              |         |---- Repos ---> Alacritty , Ncmpcpp , Neovim
              |         |---- Script ---> Fetch , Search , Preview
-             |        
+             |
+             |
              |------- Profiles
              |           |
              |           |-------- tty 
              |           |-------- Wayland ---> Sway
              |           |-------- x11-xorg ---> Awesome (SOON) , BspWM (SOON) , XMonad
+             |
              |
              |------- Station
                          |
@@ -50,6 +53,7 @@ Nixpkgs
                          |           |------ Color Scheme
                          |           |------ WallPaper
                          |           |------ Xpm-Icons
+                         |
                          |
                          |-------- utilities
                                       |
