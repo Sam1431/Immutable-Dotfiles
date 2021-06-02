@@ -243,7 +243,6 @@ myLogHook = fadeInactiveLogHook fadeAmount
     where fadeAmount = 1.0
 
 
-
 --------------------------------------------------------------------------------------
 -------------------------------- XMONAD KEYBINDINGS ----------------------------------
 --------------------------------------------------------------------------------------
@@ -262,9 +261,11 @@ myKeys =
 
    -- MENU
          , ("M-<Return>", shellPrompt dtXPConfig)                                             -- Shell Prompt
+   
    -- WINDOW
          , ("M-q", kill1)                                                                     -- Kill the currently focused client
          , ("M-S-a", killAll)                                                                 -- Kill all windows on current workspace
+   
    -- FLOAT LAYOUT
          , ("M-w", withFocused $ windows . W.sink)                                            -- Push floating window back to tile
          , ("M-S-<Delete>", sinkAll)                                                          -- Push ALL floating windows to tile
