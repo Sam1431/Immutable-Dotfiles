@@ -61,14 +61,14 @@ Nixpkgs
 
 
 
-#### System Fetch
-> <img src="https://github.com/Sam1431/Immutable-Dotfiles/blob/main/.assets/fe.png" alt="img" align="center" width="230px">
+ #### System Fetch
+ <img src="https://github.com/Sam1431/Immutable-Dotfiles/blob/main/.assets/fe.png" alt="img" align="center" width="230px">
 
 --------------------------------------------------
 
 
 #### Neovim Editing init.vim
-> <img src="https://github.com/Sam1431/Immutable-Dotfiles/blob/main/.assets/vi.png" alt="img" align="center" width="800px">
+ <img src="https://github.com/Sam1431/Immutable-Dotfiles/blob/main/.assets/vi.png" alt="img" align="center" width="800px">
 
 --------------------------------------------------
 
