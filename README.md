@@ -70,15 +70,13 @@ Nixpkgs
 #### Neovim Editing init.vim
  <img src="https://github.com/Sam1431/Immutable-Dotfiles/blob/main/.assets/vi.png" alt="img" align="center" width="800px">
 
+
 --------------------------------------------------
-
-
 #### File Manager ( nnn )
 <img src="https://github.com/Sam1431/Immutable-Dotfiles/blob/main/.assets/st.png" alt="img" align="center" width="400px">
 
+
 --------------------------------------------------
-
-
 #### Ncmpcpp ( From JavaCafe01 )
 <img src="https://github.com/Sam1431/Immutable-Dotfiles/blob/main/.assets/ha.png" alt="img" align="center" width="500px">
 
