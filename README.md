@@ -63,7 +63,7 @@ Nixpkgs
 ```
 --------------------------------------------------
  #### System Fetch
- <img src="https://github.com/Sam1431/Immutable-Dotfiles/blob/main/.assets/fe.png" alt="img" align="right" width="230px">
+ <img src="https://github.com/Sam1431/Immutable-Dotfiles/blob/main/.assets/fe.png" alt="img" align="center" width="230px">
 
 
 --------------------------------------------------
