@@ -1,6 +1,6 @@
 ![BeFunky-snapshot](https://user-images.githubusercontent.com/68412503/120468937-61af9980-c3bf-11eb-99c5-e372df400147.png)
 
-## New Updates
+>> New Updates
 
 - 🛠 Found a way to install custom scripts into nix system ( From Javacafe )
 - 🖥 Gruvboxified Xmonad Setup ( Enigma V.4 )
@@ -8,6 +8,8 @@
 - 📦 Proper NUR setup
 - 📝 Made enough changes from my old config to say this is my own config
 - 📁 Updated Home-Manager Layout ( Modular --> Profiles )
+
+****
 
 ### OLD LAYOUT ( MODULAR STYLE )
 
