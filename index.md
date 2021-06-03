@@ -73,7 +73,7 @@ Nixpkgs
                        Nu ----|
                  Starship ----|
 `
-<p align="center">
+<p align="right">
 --------------------------------------------------
  ** System Fetch **
 ![fe](https://user-images.githubusercontent.com/68412503/120594374-798a2a80-c45e-11eb-9b21-b58a3fec0e17.png)
