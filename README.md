@@ -3,12 +3,12 @@
 ### New Updates
 
 ****
-- ****🛠️ Found a way to install custom scripts into nix system ( From Javacafe )****
-- ****🖥️ Gruvboxified Xmonad Setup ( Enigma V.4 )****
-- ****🎵 Ncmpcpp config in nix format****
-- ****📦 Proper NUR setup****
-- ****📝 Made enough changes from my old config to say this is my own config****
-- ****📁 Updated Home-Manager Layout ( Modular --> Profiles )****
+- **🛠️ Found a way to install custom scripts into nix system ( From Javacafe )**
+- **🖥️ Gruvboxified Xmonad Setup ( Enigma V.4 )**
+- **🎵 Ncmpcpp config in nix format**
+- **📦 Proper NUR setup**
+- **📝 Made enough changes from my old config to say this is my own config**
+- **📁 Updated Home-Manager Layout ( Modular --> Profiles )**
 
 ****
 
@@ -43,35 +43,35 @@ Nixpkgs
 ```
 Nixpkgs
   |
-  |------- System
-             |
-             |-------Apps
-             |         |
-             |         |---- Repos ---> Alacritty , Ncmpcpp , Neovim
-             |         |---- Script ---> Fetch , Search , Preview
-             |
-             |
-             |------- Profiles
-             |           |
-             |           |-------- tty 
-             |           |-------- Wayland ---> Sway
-             |           |-------- x11-xorg ---> Awesome (SOON) , BspWM (SOON) , XMonad
-             |
-             |
-             |------- Station
-                         |
-                         |-------- setup
-                         |           |
-                         |           |------ Color Scheme
-                         |           |------ WallPaper
-                         |           |------ Xpm-Icons
-                         |
-                         |
-                         |-------- utilities
-                                      |
-                              Zsh ----|
-                               Nu ----|
-                         Starship ----|
+  |-- System
+        |
+        |---Apps
+        |    |
+        |    |---- Repos ---> Alacritty , Ncmpcpp , Neovim
+        |    |---- Script ---> Fetch , Search , Preview
+        |
+        |
+        |--- Profiles
+        |       |
+        |       |-------- tty 
+        |       |-------- Wayland ---> Sway
+        |       |-------- x11-xorg ---> XMonad
+        |
+        |
+        |--- Station
+                |
+                |--- setup
+                |      |
+                |      |------ Color Scheme
+                |      |------ WallPaper
+                |      |------ Xpm-Icons
+                |
+                |
+                |-------- utilities
+                              |
+                      Zsh ----|
+                       Nu ----|
+                 Starship ----|
 ```
 --------------------------------------------------
  #### System Fetch
