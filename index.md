@@ -75,22 +75,22 @@ Nixpkgs
 ```
 --------------------------------------------------
  #### System Fetch
- <img src="https://github.com/Sam1431/Immutable-Dotfiles/blob/main/.assets/fe.png" alt="img" align="center" width="230px">
+![fe](https://user-images.githubusercontent.com/68412503/120594374-798a2a80-c45e-11eb-9b21-b58a3fec0e17.png)
 
 
 --------------------------------------------------
 #### Neovim Editing init.vim
- <img src="https://github.com/Sam1431/Immutable-Dotfiles/blob/main/.assets/vi.png" alt="img" align="center" width="800px">
+![vi](https://user-images.githubusercontent.com/68412503/120594476-9d4d7080-c45e-11eb-9634-b2f7cb98f31f.png)
 
 
 --------------------------------------------------
 #### File Manager ( nnn )
-<img src="https://github.com/Sam1431/Immutable-Dotfiles/blob/main/.assets/st.png" alt="img" align="center" width="400px">
+![st](https://user-images.githubusercontent.com/68412503/120594411-89097380-c45e-11eb-99bf-8b9afd7f2300.png)
 
 
 --------------------------------------------------
 #### Ncmpcpp ( From JavaCafe01 )
-<img src="https://github.com/Sam1431/Immutable-Dotfiles/blob/main/.assets/ha.png" alt="img" align="center" width="500px">
+![ha](https://user-images.githubusercontent.com/68412503/120594538-b2c29a80-c45e-11eb-8b9b-0ee04e19b732.png)
 
 
 --------------------------------------------------
