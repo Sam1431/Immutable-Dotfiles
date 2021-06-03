@@ -2,6 +2,7 @@
 
 ## New Updates
 
+****
 - ****🛠 Found a way to install custom scripts into nix system ( From Javacafe )****
 - ****🖥 Gruvboxified Xmonad Setup ( Enigma V.4 )****
 - ****🔊 Ncmpcpp config in nix format****
