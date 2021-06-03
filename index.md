@@ -45,33 +45,33 @@ Nixpkgs
   |
   |-- System
         |
-        |-------Apps
-        |         |
-        |         |---- Repos ---> Alacritty , Ncmpcpp , Neovim
-        |         |---- Script ---> Fetch , Search , Preview
+        |---Apps
+        |    |
+        |    |---- Repos ---> Alacritty , Ncmpcpp , Neovim
+        |    |---- Script ---> Fetch , Search , Preview
         |
         |
-        |------- Profiles
-        |           |
-        |           |-------- tty 
-        |           |-------- Wayland ---> Sway
-        |           |-------- x11-xorg ---> Awesome (SOON) , BspWM (SOON) , XMonad
+        |--- Profiles
+        |       |
+        |       |-------- tty 
+        |       |-------- Wayland ---> Sway
+        |       |-------- x11-xorg ---> Awesome (SOON) , BspWM (SOON) , XMonad
         |
         |
-        |------- Station
-                     |
-                     |-------- setup
-                     |           |
-                     |           |------ Color Scheme
-                     |           |------ WallPaper
-                     |           |------ Xpm-Icons
-                     |
-                     |
-                     |-------- utilities
-                                  |
-                          Zsh ----|
-                           Nu ----|
-                    Starship ----|
+        |--- Station
+                |
+                |--- setup
+                |      |
+                |      |------ Color Scheme
+                |      |------ WallPaper
+                |      |------ Xpm-Icons
+                |
+                |
+                |-------- utilities
+                              |
+                      Zsh ----|
+                       Nu ----|
+                 Starship ----|
 ```
 --------------------------------------------------
  #### System Fetch
