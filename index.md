@@ -72,7 +72,8 @@ Nixpkgs
                       Zsh ----|
                        Nu ----|
                  Starship ----|
-`
+
+```
 <p align="right">
 --------------------------------------------------
  ** System Fetch **
