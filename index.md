@@ -74,7 +74,7 @@ Nixpkgs
                  Starship ----|
 
 ```  
-<p align="center">
+<p align="left">
 --------------------------------------------------
 
 ** System Fetch **
