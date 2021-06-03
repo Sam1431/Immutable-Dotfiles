@@ -73,7 +73,8 @@ Nixpkgs
                        Nu ----|
                  Starship ----|
 
-```  
+```
+<p align="left">
 --------------------------------------------------
 
 ** System Fetch **
@@ -108,3 +109,4 @@ Nixpkgs
 
 ![2021-06-02-184125_1366x768_scrot](https://user-images.githubusercontent.com/68412503/120486168-66ca1400-c3d2-11eb-9819-97db20e3ed0c.png)
 
+</p>
