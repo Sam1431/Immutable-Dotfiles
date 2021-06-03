@@ -55,7 +55,7 @@ Nixpkgs
         |       |
         |       |-------- tty 
         |       |-------- Wayland ---> Sway
-        |       |-------- x11-xorg ---> Awesome (SOON) , BspWM (SOON) , XMonad
+        |       |-------- x11-xorg ---> XMonad
         |
         |
         |--- Station
