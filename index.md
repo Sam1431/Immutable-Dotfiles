@@ -3,12 +3,12 @@
 ### New Updates
 
 ****
-- ****🛠️ Found a way to install custom scripts into nix system ( From Javacafe )****
-- ****🖥️ Gruvboxified Xmonad Setup ( Enigma V.4 )****
-- ****🎵 Ncmpcpp config in nix format****
-- ****📦 Proper NUR setup****
-- ****📝 Made enough changes from my old config to say this is my own config****
-- ****📁 Updated Home-Manager Layout ( Modular --> Profiles )****
+- **🛠️ Found a way to install custom scripts into nix system ( From Javacafe )**
+- **🖥️ Gruvboxified Xmonad Setup ( Enigma V.4 )**
+- **🎵 Ncmpcpp config in nix format**
+- **📦 Proper NUR setup**
+- **📝 Made enough changes from my old config to say this is my own config**
+- **📁 Updated Home-Manager Layout ( Modular --> Profiles )**
 
 ****
 
