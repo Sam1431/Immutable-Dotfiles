@@ -43,35 +43,35 @@ Nixpkgs
 ```
 Nixpkgs
   |
-  |------- System
-             |
-             |-------Apps
-             |         |
-             |         |---- Repos ---> Alacritty , Ncmpcpp , Neovim
-             |         |---- Script ---> Fetch , Search , Preview
-             |
-             |
-             |------- Profiles
-             |           |
-             |           |-------- tty 
-             |           |-------- Wayland ---> Sway
-             |           |-------- x11-xorg ---> Awesome (SOON) , BspWM (SOON) , XMonad
-             |
-             |
-             |------- Station
-                         |
-                         |-------- setup
-                         |           |
-                         |           |------ Color Scheme
-                         |           |------ WallPaper
-                         |           |------ Xpm-Icons
-                         |
-                         |
-                         |-------- utilities
-                                      |
-                              Zsh ----|
-                               Nu ----|
-                         Starship ----|
+  |-- System
+        |
+        |-------Apps
+        |         |
+        |         |---- Repos ---> Alacritty , Ncmpcpp , Neovim
+        |         |---- Script ---> Fetch , Search , Preview
+        |
+        |
+        |------- Profiles
+        |           |
+        |           |-------- tty 
+        |           |-------- Wayland ---> Sway
+        |           |-------- x11-xorg ---> Awesome (SOON) , BspWM (SOON) , XMonad
+        |
+        |
+        |------- Station
+                     |
+                     |-------- setup
+                     |           |
+                     |           |------ Color Scheme
+                     |           |------ WallPaper
+                     |           |------ Xpm-Icons
+                     |
+                     |
+                     |-------- utilities
+                                  |
+                          Zsh ----|
+                           Nu ----|
+                    Starship ----|
 ```
 --------------------------------------------------
  #### System Fetch
