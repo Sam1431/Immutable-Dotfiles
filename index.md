@@ -72,7 +72,8 @@ Nixpkgs
                       Zsh ----|
                        Nu ----|
                  Starship ----|
-```
+`
+<p align="center">
 --------------------------------------------------
  ** System Fetch **
 ![fe](https://user-images.githubusercontent.com/68412503/120594374-798a2a80-c45e-11eb-9b21-b58a3fec0e17.png)
@@ -96,3 +97,5 @@ Nixpkgs
 --------------------------------------------------
 ** FULL DESKTOP **
 ![2021-06-02-184125_1366x768_scrot](https://user-images.githubusercontent.com/68412503/120486168-66ca1400-c3d2-11eb-9819-97db20e3ed0c.png)
+
+</p>
