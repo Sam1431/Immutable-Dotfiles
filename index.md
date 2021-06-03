@@ -77,35 +77,35 @@ Nixpkgs
 <p align="left">
 --------------------------------------------------
 
-#### System Fetch 
+System Fetch
 
 ![fe](https://user-images.githubusercontent.com/68412503/120594374-798a2a80-c45e-11eb-9b21-b58a3fec0e17.png)
 
 
 --------------------------------------------------
 
-#### Neovim Editing init.vim
+Neovim Editing init.vim
 
 ![vi](https://user-images.githubusercontent.com/68412503/120594476-9d4d7080-c45e-11eb-9634-b2f7cb98f31f.png)
 
 
 --------------------------------------------------
-
-#### File Manager ( nnn )
+  
+File Manager ( nnn )
 
 ![st](https://user-images.githubusercontent.com/68412503/120594411-89097380-c45e-11eb-99bf-8b9afd7f2300.png)
 
 
 --------------------------------------------------
 
-#### Ncmpcpp ( From JavaCafe01 )
+Ncmpcpp ( From JavaCafe01 )
 
 ![ha](https://user-images.githubusercontent.com/68412503/120594538-b2c29a80-c45e-11eb-8b9b-0ee04e19b732.png)
 
 
 --------------------------------------------------
-
-#### FULL DESKTOP
+  
+FULL DESKTOP
 
 ![2021-06-02-184125_1366x768_scrot](https://user-images.githubusercontent.com/68412503/120486168-66ca1400-c3d2-11eb-9819-97db20e3ed0c.png)
 
