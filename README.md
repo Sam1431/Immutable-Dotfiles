@@ -41,33 +41,31 @@ Nixpkgs
 ### NEW LAYOUT ( PROFILE STYLE )
 
 ```
-Nixpkgs
-  |
-  |-- System
-        |
-        |---Apps
-        |    |
-        |    |---- Repos ---> Alacritty , Ncmpcpp , Neovim
-        |    |---- Script ---> Fetch , Search , Preview
-        |
-        |
-        |--- Profiles
-        |       |
-        |       |-------- tty 
-        |       |-------- Wayland ---> Sway
-        |       |-------- x11-xorg ---> XMonad
-        |
-        |
-        |--- Station
-                |
-                |--- setup
-                |      |
-                |      |------ Color Scheme
-                |      |------ WallPaper
-                |      |------ Xpm-Icons
-                |
-                |
-                |-------- utilities
+Nixpkgs                                                              
+  |                                                              
+  |-- System                                                              
+        |                         --------------------------------------
+        |---Apps                  |                                    |       
+        |    |                    V                                    |                         
+        |    |---- Repos ---> Alacritty , Ncmpcpp , Neovim , Polybar <-|                                                 
+        |    |---- Script ---> Fetch , Search , Preview                |                                                                                                     |             ^----------------------------                    |
+        |                                         |                    |
+        |--- Profiles                             |                    |            
+        |       |                                 |                    |        
+        |       |-------- tty                     |                    |                     
+        |       |-------- Wayland ---> Sway       |                    |                                 
+        |       |-------- x11-xorg ---> XMonad----|                    |                                                                                                     |                                                              |
+        |                                                              |
+        |--- Station                                                   |
+                |                                                      |
+                |--- setup                                             |
+                |      |                                               |
+                |      |------ Color Scheme ---------------------------|
+                |      |------ WallPaper                |
+                |      |------ Xpm-Icons                |
+                |                                       |
+                |                                       |
+                |-------- utilities --------------------|
                               |
                       Zsh ----|
                        Nu ----|
