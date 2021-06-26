@@ -2,13 +2,13 @@
 -- install xmobar with these flags: --flags="with_alsa" --flags="with_mpd" --flags="with_xft"  OR --flags="all_extensions"
 -- you can find weather location codes here: http://weather.noaa.gov/index.html
 
-Config { font    = "xft:Iosevka Slab:weight=Regular:pixelsize=12:antialias=true:hinting=true"
+Config { font    = "xft:Iosevka Term:weight=Medium:pixelsize=12:antialias=true:hinting=true"
        , additionalFonts = [ "xft:Droid Sans:pixelsize=11:antialias=true:hinting=true"
                            , "xft:Iosevka Nerd Font:pixelsize=16:antialias=true:hinting=true"
                            , "xft:FontAwesome:pixelsize=13"
                            ]
        , textOffset = 18
-       , bgColor = "#282828"
+       , bgColor = "#282a36"
        , fgColor = "#abb2bf"
        , position = Static { xpos = 0, ypos = 0, width = 1366, height = 28 }
        , lowerOnStart = True
@@ -33,5 +33,5 @@ Config { font    = "xft:Iosevka Slab:weight=Regular:pixelsize=12:antialias=true:
                     ]
        , sepChar = "%"
        , alignSep = "}{"
-       , template = " %UnsafeStdinReader% }{<fc=#689d6a>  %cpu% </fc><fc=#abb2bf><fn=0> | </fn></fc><fc=#d79921> %date% </fc><fc=#abb2bf><fn=0> |</fn></fc><fc=#a0cf44>  %time%  </fc>"
+       , template = " %UnsafeStdinReader% }{<fc=#50fa7b>  %cpu% </fc><fc=#abb2bf><fn=0> | </fn></fc><fc=#ffb86c> %date% </fc><fc=#abb2bf><fn=0> |</fn></fc><fc=#bd93f9>  %time%  </fc>"
        }

@@ -1,4 +1,7 @@
- {
+let
+  clr = import ../../../station/setup/colorschemes/horizon.nix;
+in
+  {
     env = {
      "TERM" = "xterm-256color";
   };
@@ -20,17 +23,17 @@
     use_thin_strokes = true;
 
     normal = {
-      family = "Iosevka Slab";
+      family = "Iosevka";
       style = "Regular";
     };
 
     bold = {
-      family = "Iosevka Slab";
-      style = "Regular";
+      family = "Iosevka";
+      style = "Bold";
     };
 
     italic = {
-      family = "Iosevka Slab";
+      family = "Iosevka";
       style = "Italic";
     };
   };
@@ -40,7 +43,7 @@
   cursor.style = "Block";
 
   shell = {
-    program = "tmux";
+    program = "elvish";
   };
 
 #### COLOR SCHEME --------------
@@ -48,29 +51,29 @@
   colors = {
     # Default colors
     primary = {
-      background = "#282828";
-      foreground = "#ebdbb2";
+      background = clr.background;
+      foreground = clr.foreground;
     };
 
   normal = {
-    black =   "#5c5151";
-    red =     "#cc241d";
-    green =   "#a0cf44";
-    yellow =  "#d79921";
-    blue =    "#458588";
-    magenta = "#b16286";
-    cyan =    "#689d6a";
-    white =   "#a89984";
+    black =   clr.black;
+    red =     clr.red;
+    green =   clr.green;
+    yellow =  clr.yellow;
+    blue =    clr.blue;
+    magenta = clr.magenta;
+    cyan =    clr.cyan;
+    white =   clr.white;
 };
   bright = {
-    black =   "#928374";
-    red =     "#fb4934";
-    green =   "#a0cf44";
-    yellow =  "#fabd2f";
-    blue =    "#83a598";
-    magenta = "#d3869b";
-    cyan =    "#8ec07c";
-    white =   "#ebdbb2";
+    black =   clr.black-br;
+    red =     clr.red-br;
+    green =   clr.green-br;
+    yellow =  clr.yellow-br;
+    blue =    clr.blue-br;
+    magenta = clr.magenta-br;
+    cyan =    clr.cyan-br;
+    white =   clr.white-br;
 };
   };
 }

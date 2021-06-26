@@ -33,6 +33,7 @@ import XMonad.Hooks.ManageHelpers (isFullscreen, doFullFloat)
 import XMonad.Hooks.ServerMode
 import XMonad.Hooks.SetWMName
 import XMonad.Hooks.WorkspaceHistory
+import XMonad.Hooks.ManageHelpers
 
     -- Layouts
 import XMonad.Layout.SimplestFloat
@@ -44,6 +45,12 @@ import XMonad.Layout.LimitWindows (limitWindows, increaseLimit, decreaseLimit)
 import XMonad.Layout.MultiToggle (mkToggle, single, EOT(EOT), (??))
 import XMonad.Layout.MultiToggle.Instances (StdTransformers(NBFULL, MIRROR, NOBORDERS))
 import XMonad.Layout.NoBorders
+import XMonad.Layout.ShowWName
+
+import XMonad.Layout.Decoration
+import XMonad.Layout.DecorationAddons
+import XMonad.Layout.SimpleDecoration
+
 import XMonad.Layout.Renamed (renamed, Rename(Replace))
 import XMonad.Layout.Spacing
 import XMonad.Layout.WindowArranger (windowArrange, WindowArrangerMsg(..))
@@ -62,15 +69,26 @@ import Control.Arrow (first)
 import XMonad.Util.EZConfig (additionalKeysP)
 import XMonad.Util.Run (runProcessWithInput, safeSpawn, spawnPipe)
 import XMonad.Util.SpawnOnce
+import XMonad.Util.NamedScratchpad
+import XMonad.Util.NamedWindows       (getName)
+import XMonad.Util.Run                (runInTerm, safeSpawn)
 
-
+--  import Data.Monoid
+--  import Bind.Master
+--  import Bus.EventHook
+--  import Bus.LogHook
+--  import Bus.ManageHook
+--  import Config.Options
+--  import Config.Projects
+--  import Container.Layout
+--  import Container.Navigation
 
 --------------------------------------------------------------------------------------
 -------------------------- DEFAULTS SETTINGS / APPS ----------------------------------
 --------------------------------------------------------------------------------------
 
 myFont :: String
-myFont = "xft:Iosevka Slab:regular:size=11:antialias=true:hinting=true"
+myFont = "xft:Iosevka:regular:size=11:antialias=true:hinting=true"
 
 myModMask :: KeyMask
 myModMask = mod4Mask            -- Sets modkey to super/windows key
@@ -85,13 +103,13 @@ myEditor :: String
 myEditor = "alacritty -e nvim"  -- Sets emacs as editor for tree select
 
 myBorderWidth :: Dimension
-myBorderWidth = 1               -- Sets border width for windows
+myBorderWidth = 2               -- Sets border width for windows
 
 myNormColor :: String
-myNormColor   = "#131313"       -- Border color of normal windows
+myNormColor   = "#22242e"       -- Border color of normal windows
 
 myFocusColor :: String
-myFocusColor  = "#948d79"       -- Border color of focused windows
+myFocusColor  = "#bd93f9"       -- Border color of focused windows
 
 altMask :: KeyMask
 altMask = mod1Mask              -- Setting this for use in xprompts
@@ -109,6 +127,8 @@ myStartupHook = do
           spawnOnce "sh /home/shiva/.fehbg"
           spawnOnce "picom &"
           spawnOnce "mpd"
+          spawnOnce "mpd-mpris"
+          spawnOnce "polybar xmonad"
           spawnOnce "xsetroot -cursor_name left_ptr &"
           setWMName "LG3D"
 
@@ -162,14 +182,15 @@ myAppGrid = [ ("Audacity", "audacity")
 dtXPConfig :: XPConfig
 dtXPConfig = def
       { font                = myFont
-      , bgColor             = "#282828"
-      , fgColor             = "#ebdbb2"
-      , bgHLight            = "#ebdbb2"
-      , fgHLight            = "#282828"
-      , borderColor         = "#3b3b3b"
-      , promptBorderWidth   = 1
-      , position            = CenteredAt { xpCenterY = 0.3, xpWidth = 0.3 }
-      , height              = 40
+      , bgColor             = "#232530"
+      , fgColor             = "#e0e0e0"
+      , bgHLight            = "#bd93f9"
+      , fgHLight            = "#232530"
+      , borderColor         = "#1c1e26"
+      , promptBorderWidth   = 0
+      , position            = CenteredAt { xpCenterY = 0.3, xpWidth = 0.4 }
+      --, position            = Bottom
+      , height              = 42
       , historySize         = 256
       , historyFilter       = id
       , defaultText         = []
@@ -191,7 +212,7 @@ mySpacing i = spacingRaw False (Border i i i i) True (Border i i i i) True
 
 tall     = renamed [Replace "tall"]
            $ limitWindows 12
-           $ mySpacing 8
+           $ mySpacing 5
            $ ResizableTall 1 (3/100) (6/10) []
 monocle  = renamed [Replace "monocle"]
            $ limitWindows 20 Full
@@ -207,6 +228,18 @@ myLayoutHook = avoidStruts $ mouseResize $ windowArrange $ T.toggleLayouts float
                                  ||| monocle
 
 
+--------------------------------------------------------------------------------------
+---------------- SHOW WORKSPACE NAME AS A POPUP RATHER THAN IN THE BAR ---------------
+--------------------------------------------------------------------------------------
+
+myShowWNameTheme :: SWN1Config
+myShowWNameTheme = def
+    { swn_font              = "xft:Iosevka Term:Heavy:size=28"
+    , swn_fade              = 0.5
+    , swn_bgcolor           = "#282a36"
+    , swn_color             = "#f8f8f2"
+    }
+
 
 --------------------------------------------------------------------------------------
 ------------------------------------ WORKSPACES --------------------------------------
@@ -220,7 +253,7 @@ xmobarEscape = concatMap doubleLts
 
 myWorkspaces :: [String]
 myWorkspaces = (map xmobarEscape)
-               $[" TERM ", " MUSIC ", " WEB ", " FILES ", " DEV "]
+               $[" ONE ", " TWO ", " THREE ", " FOUR ", " FIVE "]
 
 
 --------------------------------------------------------------------------------------
@@ -229,10 +262,47 @@ myWorkspaces = (map xmobarEscape)
 
 myManageHook :: XMonad.Query (Data.Monoid.Endo WindowSet)
 myManageHook = composeAll
-     [ className =? "htop"    --> doShift ( myWorkspaces !! 5 )
-     , className =? "Gimp"    --> doShift ( myWorkspaces !! 5 )
-     ]
+     [ className =? "confirm"         --> doFloat
+     , className =? "file_progress"   --> doFloat
+     , className =? "dialog"          --> doFloat
+     , title =? "scratchpad"          --> hasBorder False
+     , title =? "music"               --> hasBorder False
+     , className =? "download"        --> doFloat
+     , className =? "error"           --> doFloat
+     , className =? "Gimp"            --> doFloat
+     , className =? "notification"    --> doFloat
+     , className =? "pinentry-gtk-2"  --> doFloat
+     , className =? "splash"          --> doFloat
+     , className =? "toolbar"         --> doFloat
+     , title =? "Oracle VM VirtualBox Manager"  --> doFloat
+     , title =? "Mozilla Firefox"     --> doShift ( myWorkspaces !! 1 )
+     , className =? "brave-browser"   --> doShift ( myWorkspaces !! 1 )
+     , className =? "qutebrowser"     --> doShift ( myWorkspaces !! 1 )
+     , className =? "mpv"             --> doShift ( myWorkspaces !! 7 )
+     , className =? "Gimp"            --> doShift ( myWorkspaces !! 8 )
+     , className =? "VirtualBox Manager" --> doShift  ( myWorkspaces !! 4 )
+     , (className =? "firefox" <&&> resource =? "Dialog") --> doFloat  -- Float Firefox Dialog
+     , isFullscreen -->  doFullFloat
+     ] <+> namedScratchpadManageHook myScratchPads
 
+--------------------------------------------------------------------------------------
+------------------------------- DISABLE NSP BORDERS ----------------------------------
+--------------------------------------------------------------------------------------
+
+-- use window rule commands as query
+removeBorderQuery :: Query Bool
+removeBorderQuery = title =? "scratchpad" <||> title =? "music"
+
+removeBorder :: Window -> X ()
+removeBorder ws = withDisplay $ \d -> mapM_ (\w -> io $ setWindowBorderWidth d w 0) [ws]
+
+myBorderEventHook :: Event -> X All
+
+myBorderEventHook (MapNotifyEvent {ev_window = window}) = do
+    whenX (runQuery removeBorderQuery window) (removeBorder window)
+    return $ All True
+
+myBorderEventHook _ = return $ All True
 
 --------------------------------------------------------------------------------------
 ------------------------------- RUN PROMPT / WIDGET FADE -----------------------------
@@ -242,6 +312,34 @@ myLogHook :: X ()
 myLogHook = fadeInactiveLogHook fadeAmount
     where fadeAmount = 1.0
 
+--------------------------------------------------------------------------------------
+----------------------------------- NAMED SCRATCHPAD ---------------------------------
+--------------------------------------------------------------------------------------
+
+myScratchPads :: [NamedScratchpad]
+myScratchPads = [ NS "terminal" spawnTerm findTerm manageTerm
+                , NS "ncmpcpp" spawnMus findMus manageMus
+                ]
+  where
+  -- role = stringProperty "WM_WINDOW_ROLE"
+  -- wm_name = stringProperty "WM_NAME"
+
+    spawnTerm  = myTerminal ++ " -t scratchpad -e ranger"
+    findTerm   = title =? "scratchpad"
+    manageTerm = customFloating $ W.RationalRect l t w h
+               where
+                 h = 1.0
+                 w = 0.3
+                 t = 1.0 -h
+                 l = 0.3 -w
+    spawnMus  = myTerminal ++ " -t scratchpad -e ncmpcpp"
+    findMus   = title =? "music"
+    manageMus = customFloating $ W.RationalRect l t w h
+               where
+                 h = 1.0
+                 w = 0.3
+                 t = 1.0 -h
+                 l = 0.3 -w
 
 --------------------------------------------------------------------------------------
 -------------------------------- XMONAD KEYBINDINGS ----------------------------------
@@ -250,35 +348,48 @@ myLogHook = fadeInactiveLogHook fadeAmount
 myKeys :: [(String, X ())]
 myKeys =
 
-   -- XMONAD
-         [ ("M-C-r", spawn "xmonad --recompile")      -- Recompiles xmonad
+         -- XMONAD
+         [ ("M-C-r", spawn "sh /home/$USER/.config/rofi/appmenu")      -- Recompiles xmonad
          , ("M-S-r", spawn "xmonad --restart && notify-send 'Xmonad Recompiled'")             -- Restarts xmonad
 
-   -- TERMINAL
+         -- TERMINAL
          , ("M-S-<Return>", spawn (myTerminal))
          , ("M-C-n", spawn (myTerminal ++ " -e ncmpcpp"))
          , ("M-e", spawn (myTerminal ++ " -e nvim"))
+         , ("M-f", namedScratchpadAction myScratchPads  "terminal" )
+         , ("M-s", namedScratchpadAction myScratchPads  "ncmpcpp" )
 
-   -- MENU
+--------------------------------------------------------------------------------------
+-- MENU
+
          , ("M-<Return>", shellPrompt dtXPConfig)                                             -- Shell Prompt
-   
-   -- WINDOW
+
+--------------------------------------------------------------------------------------
+-- WINDOW
+
          , ("M-q", kill1)                                                                     -- Kill the currently focused client
          , ("M-S-a", killAll)                                                                 -- Kill all windows on current workspace
-   
-   -- FLOAT LAYOUT
+
+--------------------------------------------------------------------------------------
+-- FLOAT LAYOUT
+
          , ("M-w", withFocused $ windows . W.sink)                                            -- Push floating window back to tile
          , ("M-S-<Delete>", sinkAll)                                                          -- Push ALL floating windows to tile
-         , (("M-d"), withFocused (keysResizeWindow (-10,-10) (1,1)))
-         , (("M-s"), withFocused (keysResizeWindow (10,10) (1,1)))
+
+       --  , (("M-d"), withFocused (keysResizeWindow (-10,-10) (1,1)))
+       --  , (("M-s"), withFocused (keysResizeWindow (10,10) (1,1)))
          , (("M-S-d"), withFocused (keysAbsResizeWindow (-10,-10) (1024,752)))
          , (("M-S-s"), withFocused (keysAbsResizeWindow (10,10) (1024,752)))
 
-   -- GRID SELECT
-         , ("C-g g", spawnSelected' myAppGrid)                                                -- grid select favorite apps
+--------------------------------------------------------------------------------------
+-- GRID SELECT
+
+         , ("C-g a", spawnSelected' myAppGrid)                                                -- grid select favorite apps
          , ("C-g t", goToSelected $ mygridConfig myColorizer)                                 -- goto selected window
 
-   -- WINDOW NAVIGATION
+--------------------------------------------------------------------------------------
+-- WINDOW NAVIGATION
+--
          , ("M-m", windows W.focusMaster)                                                     -- Move focus to the master window
          , ("M-j", windows W.focusDown)                                                       -- Move focus to the next window
          , ("M-k", windows W.focusUp)                                                         -- Move focus to the prev window
@@ -287,9 +398,12 @@ myKeys =
          , ("M-<Backspace>", promote)                                                         -- Moves focused window to master, others maintain order
          , ("M1-S-<Tab>", rotSlavesDown)                                                      -- Rotate all windows except master and keep focus in place
          , ("M1-C-<Tab>", rotAllDown)                                                         -- Rotate all the windows in the current stack
+
          , ("M-C-s", killAllOtherCopies)
 
-   -- LAYOUT KEY
+--------------------------------------------------------------------------------------
+-- LAYOUT KEY
+
          , ("M-<Tab>", sendMessage NextLayout)                                                -- Switch to next layout
          , ("M-C-M1-<Up>", sendMessage Arrange)
          , ("M-C-M1-<Down>", sendMessage DeArrange)
@@ -301,30 +415,38 @@ myKeys =
          , ("M-S-<KP_Multiply>", increaseLimit)                                               -- Increase number of windows
          , ("M-S-<KP_Divide>", decreaseLimit)                                                 -- Decrease number of windows
 
-   -- RESIZING
+--------------------------------------------------------------------------------------
+-- RESIZING
+
          , ("M-h", sendMessage Shrink)                                                        -- Shrink horiz window width
          , ("M-l", sendMessage Expand)                                                        -- Expand horiz window width
          , ("M-C-j", sendMessage MirrorShrink)                                                -- Shrink vert window width
          , ("M-C-k", sendMessage MirrorExpand)                                                -- Exoand vert window width
 
-   -- MPD
+--------------------------------------------------------------------------------------
+-- MPD
+
          , ("M-o", spawn "mpc next")                                                          -- Switch focus to next monitor
          , ("M-p", spawn "mpc prev")                                                          -- Switch focus to prev monitor
          , ("M-S-o", spawn "mpc pause")                                                       -- Shifts focused window to next ws
          , ("M-S-p", spawn "mpc play")                                                        -- Shifts focused window to prev ws
 
-   -- SCRIPTS
+--------------------------------------------------------------------------------------
+-- SCRIPTS
+
          , ("M-u s", spawn "bash ~/.config/nixpkgs/user/scripts/system/screen.sh")
          , ("M-a", spawn "bash -c ~/.config/rofi/wifi/rofi-wifi-menu.sh")
 
-   -- SYSTEM APPS
+--------------------------------------------------------------------------------------
+-- SYSTEM APPS
+
          , ("M-n", spawn "cmst -d")
+
+--------------------------------------------------------------------------------------
       ]
 
 main :: IO ()
 main = do
--- START XMOBAR
-    xmproc0 <- spawnPipe "xmobar -x 0 /home/shiva/.config/nixpkgs/system/profiles/x11-xorg/xmonad/xmobar.hs"
 
 -- XMONAD HOOKS
     xmonad $ ewmh def
@@ -333,24 +455,14 @@ main = do
                                <+> serverModeEventHook
                                <+> serverModeEventHookF "XMONAD_PRINT" (io . putStrLn)
                                <+> docksEventHook
+                               <+> myBorderEventHook
         , modMask            = myModMask
         , terminal           = myTerminal
         , startupHook        = myStartupHook
-        , layoutHook         = myLayoutHook
+        , layoutHook         = showWName' myShowWNameTheme $ myLayoutHook
         , workspaces         = myWorkspaces
         , borderWidth        = myBorderWidth
         , normalBorderColor  = myNormColor
         , focusedBorderColor = myFocusColor
-        , logHook = workspaceHistoryHook <+> myLogHook <+> dynamicLogWithPP xmobarPP
-                        { ppOutput = \x -> hPutStrLn xmproc0 x
-                        , ppCurrent = xmobarColor "#a0cf44" "" . wrap "[" "]"   -- Current workspace in xmobar
-                        , ppVisible = xmobarColor "#a0cf44" ""                  -- Visible but not current workspace
-                        , ppHidden = xmobarColor "#83c9c7" "" . wrap "" ""      -- Hidden workspaces in xmobar
-                        , ppHiddenNoWindows = xmobarColor "#d8bae6" ""          -- Hidden workspaces (no windows)
-                        , ppTitle = xmobarColor "#ebdbb2" "" . shorten 30       -- Title of active window in xmobar
-                        , ppSep =  "<fc=#666666> <fn=0>|</fn> </fc>"                       -- Separators in xmobar
-                        , ppUrgent = xmobarColor "#C45500" "" . wrap "!" "!"    -- Urgent workspace
-                        , ppExtras  = [windowCount]                             -- # of windows current workspace
-                        , ppOrder  = \(ws:l:t:ex) -> [ws]
-                        }
+        , logHook = workspaceHistoryHook <+> myLogHook
         } `additionalKeysP` myKeys

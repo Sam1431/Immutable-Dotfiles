@@ -10,7 +10,7 @@ imports = [
     EDITOR = "nvim";
     VISUAL = "nvim";
     TERMINAL = "alacritty";
-    SHELL = "nu";
+    SHELL = "zsh";
   };
 }
 

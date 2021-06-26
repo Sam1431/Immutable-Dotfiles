@@ -14,9 +14,9 @@
   };
 
   imports = [
-#    ../../../station/utilities/zsh.nix
-     ../../../station/utilities/nushell.nix
-#    ../../../station/utilities/starship.nix
+    ../../../station/utilities/zsh.nix
+#    ../../../station/utilities/nushell.nix
+    ../../../station/utilities/starship.nix
   ];
 
 }

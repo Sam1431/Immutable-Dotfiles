@@ -11,7 +11,10 @@ let
     man_script = pkgs.writeShellScriptBin "macho"
     (import ./scripts/manix.nix { inherit pkgs; });
 
-   # search_script = pkgs.writeShellScriptBin "ytfzf"
+    polybar_script = pkgs.writeShellScriptBin "poly-launch"
+    (import ./scripts/restart-polybar.nix { inherit pkgs; });
+  
+  # search_script = pkgs.writeShellScriptBin "ytfzf"
    # (import ./scripts/nix-search.nix { inherit pkgs; });
 in
 {
@@ -20,6 +23,7 @@ in
      ./repos/nur/nur-progs.nix
      ./repos/neovim/neovim.nix
      ./repos/ncmpcpp/ncmpcpp.nix
+     ./repos/polybar/polybar.nix
      ./repos/alacritty/alacritty.nix
      ./repos/compton/compton.nix
   ];
@@ -30,14 +34,15 @@ in
 ranger
 unzip
 trash-cli
+elvish
 htop
 ffmpeg
 wpa_supplicant_gui
-tmux
 manix
 search_script
 man_script
 fetch_script
+polybar_script
 
 ##### UTILITIES ##### ---------------
 scrot
@@ -47,9 +52,7 @@ cmatrix
 cava
 exa
 slop
-xsecurelock
-amfora
-nnn
+betterlockscreen
 fzf
 
 ##### NETWORK ##### -----------------
@@ -63,11 +66,16 @@ vlc
 pavucontrol
 mpd
 mpc_cli
+mpd-mpris
+playerctl
+skippy-xd
+pulsemixer
 ncmpcpp
 feh
 easytag
 imagemagick
 gcolor2
+rofi
 
 ##### LIB ##### ---------------------
 libnotify
@@ -77,8 +85,7 @@ libsForQt5.qtstyleplugins
 lxappearance
 pop-gtk-theme
 numix-cursor-theme
-gruvbox-dark-gtk
-gruvbox-dark-icons-gtk
+dracula-theme
 
 ##### APPLIST END ##### -------------
 

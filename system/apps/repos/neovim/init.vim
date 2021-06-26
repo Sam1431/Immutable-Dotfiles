@@ -109,7 +109,7 @@ if $TERM_BG == "light"
 else
   set background=dark
 endif
-colorscheme gruvbox
+" colorscheme dracula
 " load the plugin and indent settings for the detected filetype
 filetype plugin indent on
 " }}}

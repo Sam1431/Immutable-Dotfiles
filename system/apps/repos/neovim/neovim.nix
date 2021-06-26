@@ -10,9 +10,9 @@
         haskell-vim
         goyo-vim
         dashboard-nvim
-        gruvbox # colorscheme
+        # dracula-vim # colorscheme
         vim-gitgutter # status in gutter
-        # vim-devicons
+        vim-devicons
         vim-airline
         vim-airline-themes
         nerdtree
