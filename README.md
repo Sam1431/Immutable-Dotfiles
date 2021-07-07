@@ -144,7 +144,7 @@ Nixpkgs
 - My system is managed by a set configs/rules known as roles
 - Each Roles Contains a set of Recipes
 - Recipes are app/module config files written in nix
-- Recipes are added to nixpkgs/roles/<rolename>/option.nix
+- Recipes are added to ( ~/.config/nixpkgs/roles/<rolename>/option.nix )
 - Recipes are added in the format gnu.<recipe-name>
 ```
 Example : -
