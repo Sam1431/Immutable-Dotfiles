@@ -2,15 +2,11 @@
 
 {
 imports = [
-    ./system/system.nix
+  ./roles/role.nix
+  ./user/non-free/non.nix
   ];
 
   programs.home-manager.enable = true;
-  home.sessionVariables = {
-    EDITOR = "nvim";
-    VISUAL = "nvim";
-    TERMINAL = "alacritty";
-    SHELL = "zsh";
-  };
+  programs.home-manager.path = "$HOME/.config/nixpkgs/home-manager";
 }
 

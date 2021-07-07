@@ -1,0 +1,67 @@
+#!/usr/bin/env bash
+
+# Custom Rofi Script
+
+BORDER="#1F1F1F00"
+SEPARATOR="#1F1F1F00"
+FOREGROUND="#bbc2cf"
+BACKGROUND="#181a23"
+BACKGROUND_ALT="#1e2029"
+HIGHLIGHT_BACKGROUND="#282a36"
+HIGHLIGHT_FOREGROUND="#bd93f9"
+
+BLACK="#000000"
+WHITE="#ffffff"
+RED="#e53935"
+GREEN="#43a047"
+YELLOW="#fdd835"
+BLUE="#1e88e5"
+MAGENTA="#00897b"
+CYAN="#00acc1"
+PINK="#d81b60"
+PURPLE="#8e24aa"
+INDIGO="#3949ab"
+TEAL="#00897b"
+LIME="#c0ca33"
+AMBER="#ffb300"
+ORANGE="#fb8c00"
+BROWN="#6d4c41"
+GREY="#757575"
+BLUE_GREY="#546e7a"
+DEEP_PURPLE="#5e35b1"
+DEEP_ORANGE="#f4511e"
+LIGHT_BLUE="#039be5"
+LIGHT_GREEN="#7cb342"
+
+# Launch Rofi
+MENU="$(rofi -no-lazy-grab -sep "|" -dmenu -i -p 'Are You Sure ? :' \
+-hide-scrollbar true \
+-bw 0 \
+-lines 6 \
+-line-padding 10 \
+-padding 0 \
+-width 15 \
+-xoffset -10 -yoffset 42 \
+-location 3 \
+-columns 1 \
+-show-icons -icon-theme "Papirus" \
+-font "Iosevka 10" \
+-color-enabled true \
+-color-window "$BACKGROUND,$BORDER,$SEPARATOR" \
+-color-normal "$BACKGROUND_ALT,$FOREGROUND,$BACKGROUND_ALT,$HIGHLIGHT_BACKGROUND,$HIGHLIGHT_FOREGROUND" \
+-color-active "$BACKGROUND,$MAGENTA,$BACKGROUND_ALT,$HIGHLIGHT_BACKGROUND,$HIGHLIGHT_FOREGROUND" \
+-color-urgent "$BACKGROUND,$YELLOW,$BACKGROUND_ALT,$HIGHLIGHT_BACKGROUND,$HIGHLIGHT_FOREGROUND" \
+<<< "Yes|No")"
+case "$MENU" in
+  *Yes) systemctl poweroff ;;
+  *No) exit && notify-send "aborted shutdown";;
+esac
+
+# More Options
+# -fullscreen \
+
+# Theming help
+# color window = background, border, separator
+# color normal = background, foreground, background-alt, highlight-background, highlight-foreground
+# color active = background, foreground, background-alt, highlight-background, highlight-foreground
+# color urgent = background, foreground, background-alt, highlight-background, highlight-foreground

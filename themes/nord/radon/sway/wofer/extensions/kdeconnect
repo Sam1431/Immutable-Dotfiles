@@ -1,0 +1,9 @@
+#!/bin/sh
+
+DEVICE=$( kdeconnect-cli -l | $EXEC | sed '$ s/.*: //' | sed 's/ .*//' )
+
+if [[ "$1" != "" ]]; then
+  kdeconnect-cli --share "$1" -d $DEVICE 2> /dev/null
+fi
+
+

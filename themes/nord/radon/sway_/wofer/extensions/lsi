@@ -1,0 +1,84 @@
+#!/bin/sh
+
+# symlink this file  to a directory in $PATH, I recommend ~/.local/share/bin
+
+lsi () {  # ls with icons
+  stdin=$(echo $@ | sed 's/.[ ]*//')
+  if [[ $UWU == "true" ]]; then
+    echo "🙉 Who's my little pog champ! 🐱"
+  fi
+  if [[ -z $1 && ! -d $stdin ]]; then
+    echo "   .."
+    if [ ! -d $1 ]; then
+      echo "$1 here"
+    fi
+  fi
+  all=''
+  if $SHOW_HIDDEN; then
+    all='-A'
+  fi
+  if [[ $UWU == "true" ]]; then
+    echo "🙉 Who's my little pog champ! 🐱"
+  fi
+  if [ -f "$stdin" ]; then
+    if [[ "$stdin" =~ \.(jpg|png|svg|webp|mp3|m4a|mkv)$ ]]; then
+      convert $stdin -geometry 800x480  sixel:-
+    else
+      head -100 $stdin
+    fi
+  elif [[ -d $stdin || -z $stdin ]]; then
+  if [[ -z $stdin ]]; then ls; else ls "$stdin"; fi | while read entry; do
+    if [[ -d "$stdin/$entry" || -d $entry ]]; then  # special icons for directories
+      case $entry in
+        Document)
+          echo "   $entry"
+          ;;
+        Pictures)
+          echo "   $entry"
+          ;;
+        Videos)
+          echo "   $entry"
+          ;;
+        Music)
+          echo "   $entry"
+          ;;
+        *)
+          echo "   $entry"
+          ;;
+      esac
+    elif [[ $entry =~ \.(sh|c)$ ]]; then  # icons for filetype
+      echo "   $entry"
+    elif [[ $entry =~ \.(txt|log)$|rc$ ]]; then
+      echo "   $entry"
+    elif [[ $entry =~ \.(jpg|png|svg|webp)$ ]]; then
+      echo "   $entry"
+    elif [[ $entry =~ \.fish$ ]]; then
+      echo "   $entry"
+    elif [[ $entry =~ \.md$ ]]; then
+      echo "   $entry"
+    elif [[ $entry =~ \.py$ ]]; then
+      echo "   $entry"
+    elif [[ $entry =~ \.js$ ]]; then
+      echo "   $entry"
+    elif [[ $entry =~ \.html$ ]]; then
+      echo "   $entry"
+    elif [[ $entry =~ \.css$ ]]; then
+      echo "   $entry"
+    elif [[ $entry =~ \.mp4|mkv$ ]]; then
+      echo "   $entry"
+    elif [[ $entry =~ \.(mp3|m4a)$ ]]; then
+      echo "   $entry"
+    elif [[ $entry =~ \.(pdf)$ ]]; then
+      echo "   $entry"
+    elif [[ $entry =~ \.(tar|zip) ]]; then
+      echo "遲    $entry"
+    else
+      echo "   $entry"
+    fi
+  done
+  else
+    :
+  fi
+}
+
+lsi $@

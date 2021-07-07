@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+
+# Manga library directory
+DIR=$HOME/.mangas
+
+cd $DIR
+
+lsi () {
+  if [[ $(pwd) = ~/.manga ]]; then
+    echo "   ."
+	fi
+	ls -d */ | sort -n | while read entry; do
+    echo "   $(echo $entry | sed "s|/$||" )"
+	done
+}
+
+library () {
+    while :
+    do
+    stdout=$( lsi | $EXEC | grep -o ' .*' | sed 's| *||')
+    if [[ $(pwd) == $DIR ]]; then
+      if [[ $stdout =~ \.\. || $stdout == "" ]]; then
+        exit
+      fi
+      cd "$stdout"
+    elif [[ $(pwd) =~ $DIR/.+ ]]; then
+      if [[ $stdout =~ \.\. ]]; then
+        cd ..
+      else
+        fish -c "openmanga $stdout" 2> /dev/null
+        # cd "$stdout"; ls ./ | sort -n |  imv
+        exit
+      fi
+    else
+      exit
+    fi
+    done
+}
+
+library

@@ -1,0 +1,6 @@
+#!/bin/sh
+
+if [ $XDG_SESSION_TYPE='wayland' ]; then
+  pkill swaybg
+  swaybg -o* -i "$1" -m fill &
+fi
