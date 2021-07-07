@@ -101,7 +101,7 @@ Nixpkgs
 
 --------------------------------------------------
 ### Desktop from ROLE - HELIUM
- <img src="https://github.com/Sam1431/Immutable-Dotfiles/blob/main/.assets/helium.png" alt="img" align="center" width="230px">
+ <img src="https://github.com/Sam1431/Immutable-Dotfiles/blob/main/.assets/helium.png" alt="img" align="center" width="800px">
 
 
 --------------------------------------------------
@@ -111,17 +111,17 @@ Nixpkgs
 
 --------------------------------------------------
 ### Desktop from ROLE - KRYPTON
-<img src="https://github.com/Sam1431/Immutable-Dotfiles/blob/main/.assets/krypton.png" alt="img" align="center" width="400px">
+<img src="https://github.com/Sam1431/Immutable-Dotfiles/blob/main/.assets/krypton.png" alt="img" align="center" width="800px">
 
 
 --------------------------------------------------
 ### Desktop from ROLE - XENON
-<img src="https://github.com/Sam1431/Immutable-Dotfiles/blob/main/.assets/xenon.png" alt="img" align="center" width="500px">
+<img src="https://github.com/Sam1431/Immutable-Dotfiles/blob/main/.assets/xenon.png" alt="img" align="center" width="800px">
 
 
 --------------------------------------------------
 ### Desktop from ROLE - RADON
-<img src="https://github.com/Sam1431/Immutable-Dotfiles/blob/main/.assets/radon.png" alt="img" align="center" width="500px">
+<img src="https://github.com/Sam1431/Immutable-Dotfiles/blob/main/.assets/radon.png" alt="img" align="center" width="800px">
 
 --------------------------------------------------
 
