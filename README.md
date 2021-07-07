@@ -145,7 +145,7 @@ Nixpkgs
 - Each Roles Contains a set of Recipes
 - Recipes are app/module config files written in nix
 - Recipes are added to ( ~/.config/nixpkgs/roles/[rolename]/option.nix )
-- Recipes are added in the format gnu.<recipe-name>
+- Recipes are added in the format gnu.[recipe-nam]
 ```
 Example : -
 
