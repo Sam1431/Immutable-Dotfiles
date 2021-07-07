@@ -167,7 +167,7 @@ imports = [
 NOTE : Will only work if it is present in the recipes file 
 ```
 
-- You can you Gix to manage your system
+- You can also use Gix to manage your system ( available in my system config repo )
 
 ```
 Commands:
